@@ -1,0 +1,13 @@
+---
+- name: Loops demo
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Loop over fruits
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop:
+        - Apples
+        - Oranges
+        - Raindrops

@@ -1,0 +1,22 @@
+---
+- name: Template demo
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    band: TOOL
+    release: Lateralus
+
+  tasks:
+    - name: Render template
+      ansible.builtin.template:
+        src: templates/test.j2
+        dest: /tmp/rendered_test.txt
+
+    - name: Show result
+      ansible.builtin.command: cat /tmp/rendered_test.txt
+      register: rendered
+      changed_when: false
+
+    - name: Print result
+      ansible.builtin.debug:
+        var: rendered.stdout_lines

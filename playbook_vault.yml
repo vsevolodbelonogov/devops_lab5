@@ -1,0 +1,13 @@
+---
+- name: Vault demo
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Load secret
+      ansible.builtin.include_vars:
+        file: secret.yml
+
+    - name: Print secret
+      ansible.builtin.debug:
+        var: my_secret

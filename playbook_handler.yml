@@ -1,0 +1,16 @@
+---
+- name: Handlers demo
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Touch marker file
+      ansible.builtin.copy:
+        content: "changed\n"
+        dest: /tmp/handler_marker.txt
+      notify: Restart fake service
+
+  handlers:
+    - name: Restart fake service
+      ansible.builtin.debug:
+        msg: "Handler was triggered!"

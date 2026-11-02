@@ -1,0 +1,13 @@
+---
+- name: Vars demo
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    band: TOOL
+    release: Lateralus
+
+  tasks:
+    - name: Print band and release
+      ansible.builtin.debug:
+        msg: "Band: {{ band }} Release: {{ release }}"
